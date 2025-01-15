@@ -6,7 +6,7 @@ socket.on("connect", () => {
   console.log("Connected to the server with ID:", socket.id);
 });
 
-socket.on("post", (data) => {
+socket.on("posts", (data) => {
   console.log("Received new post event:", data);
 });
 
