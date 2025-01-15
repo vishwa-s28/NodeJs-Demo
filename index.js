@@ -65,8 +65,13 @@ mongoose
     "mongodb+srv://vishwas:Vishwa%402024@cluster0.s6fro.mongodb.net/rest"
   )
   .then((result) => {
-    app.listen(3000, () => {
-      console.log(3000);
+    const server = app.listen(3000, () => {
+      console.log("connected to port 3000");
+    });
+
+    const io = require("./socket").init(server);
+    io.on("connection", (socket) => {
+      console.log("Client connected");
     });
   })
   .catch((err) => console.log(err));
