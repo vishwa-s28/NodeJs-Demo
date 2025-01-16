@@ -86,12 +86,16 @@
         outline: none;
         color: #fff;
       }
+      #leave-room:hover {
+        background-color: red;
+      }
     </style>
   </head>
   <body>
     <ul id="messages"></ul>
     <form id="form" action="">
       <input id="input" autocomplete="off" autofocus /><button>Send</button>
+      <button id="leave-room">Leave room</button>
     </form>
 
     <script src="/socket.io/socket.io.js"></script>
@@ -103,12 +107,26 @@
       const messages = document.getElementById("messages");
       const form = document.getElementById("form");
       const input = document.getElementById("input");
+      const leaveButton = document.getElementById("leave-room");
+
+      const room = prompt("Enter room name:");
+      if (room) {
+        socket.emit("join-room", room);
+      }
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         if (input.value) {
-          socket.emit("chat-message", input.value);
+          socket.emit("chat-message", input.value, room);
           input.value = "";
+        }
+      });
+
+      leaveButton.addEventListener("click", function () {
+        if (room) {
+          socket.emit("leave-room", room);
+          alert("You have left the room.");
+          window.location.reload();
         }
       });
 
