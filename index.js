@@ -6,6 +6,7 @@ const authRoutes = require("./routes/auth");
 const mongoose = require("mongoose");
 const { Result } = require("express-validator");
 const multer = require("multer");
+const rateLimit = require("express-rate-limit");
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -30,6 +31,18 @@ const fileFilter = (req, file, cb) => {
 
 app.use(express.json());
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  message: {
+    message: "Too many requests from this IP, please try again later.",
+  },
+  standardHeaders: true,
+  legacyHeaders: true,
+});
+
+app.use(limiter);
+
 app.use(
   multer({
     storage: fileStorage,
@@ -50,6 +63,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/", (req, res) => res.send("hello world"));
 app.use("/feed", feedRoutes);
 app.use("/auth", authRoutes);
 app.use((error, req, res, next) => {
