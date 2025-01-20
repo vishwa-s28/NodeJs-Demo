@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4f7fc;
+  font-family: "Arial", sans-serif;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.login-form .input-group {
+  margin-bottom: 15px;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #0066cc;
+}
+
+button.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #0066cc;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.btn:hover {
+  background-color: #004fa3;
+}
+
+.social-login {
+  margin-top: 20px;
+  text-align: center;
+}
+
+button.btn-google,
+button.btn-facebook {
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.btn-google {
+  background-color: #db4437;
+  color: #fff;
+  border: none;
+}
+
+button.btn-google:hover {
+  background-color: #c1351d;
+}
+
+button.btn-facebook {
+  background-color: #3b5998;
+  color: #fff;
+  border: none;
+}
+
+button.btn-facebook:hover {
+  background-color: #2d4373;
+}
+
+.signup-link {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.signup-link a {
+  color: #0066cc;
+  text-decoration: none;
+}
